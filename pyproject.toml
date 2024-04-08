@@ -9,13 +9,81 @@ packages = [{include = "watering_predictioner"}]
 [tool.poetry.dependencies]
 python = "^3.12"
 pandas = "^2.2.1"
+pydantic = "^2.6.4"
 scikit-learn = "^1.4.1.post1"
-pytest = "^8.1.1"
 
 [tool.poetry.dev-dependencies]
+black = { version = "^24.3.0", extras = ["jupyter"] }
+fawltydeps = "^0.15.0"
+flake8 = "^7.0.0"
+flake8-bandit = "^4.1.1"
+flake8-bugbear = "^24.2.6"
+flake8-builtins = "^2.4.0"
+flake8-commas = "^2.1.0"
+flake8-comprehensions = "^3.14.0"
+flake8-debugger = "^4.1.2"
+flake8-isort = "^6.1.1"
+flake8-print = "^5.0.0"
+flake8-pyproject = "^1.2.3"
+flake8-pytest = "^1.4"
+flake8-pytest-style = "^2.0.0"
+isort = { version = "^5.13.2", extras = ["colors"] }
 jupyter = "^1.0.0"
 matplotlib = "^3.8.4"
+mypy = "^1.9.0"
+pytest = "^8.1.1"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+
+[tool.black]
+line-length = 120
+
+[tool.isort]
+line_length = 120
+order_by_type = false
+profile = "black"
+
+[tool.fawltydeps]
+code = ["src"]
+deps = ["pyproject.toml"]
+ignore_unused = [
+    # Dev dependencies. This list should contain ALL of them!
+    "black",
+    "fawltydeps",
+    "flake8",
+    "flake8-bandit",
+    "flake8-bugbear",
+    "flake8-builtins",
+    "flake8-commas",
+    "flake8-comprehensions",
+    "flake8-debugger",
+    "flake8-isort",
+    "flake8-print",
+    "flake8-pyproject",
+    "flake8-pytest",
+    "flake8-pytest-style",
+    "isort",
+    "mypy",
+    "pytest",
+]
+
+[tool.flake8]
+# W503 == line break before binary operator. Conflicts with W504 - line break after binary operator.
+ignore = ["W503"]
+max-line-length = 120
+
+[tool.pytest.ini_options]
+python_files = ["tests.py", "test_*.py", "*_tests.py"]
+pythonpath = [
+    ".",
+    "/src",
+]
+
+[tool.mypy]
+disallow_untyped_defs = true
+ignore_missing_imports = true
+no_implicit_optional = false
+disable_error_code = "misc"
