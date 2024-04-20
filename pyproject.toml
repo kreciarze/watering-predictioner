@@ -8,17 +8,17 @@ packages = [{include = "watering_predictioner"}]
 
 [tool.poetry.dependencies]
 python = "^3.12"
-pandas = "^2.2.1"
-pydantic = "^2.6.4"
-scikit-learn = "^1.4.1.post1"
+pandas = "^2.2.2"
+pydantic = "^2.7.0"
+scikit-learn = "^1.4.2"
 
 [tool.poetry.dev-dependencies]
-black = { version = "^24.3.0", extras = ["jupyter"] }
+black = { version = "^24.4.0", extras = ["jupyter"] }
 fawltydeps = "^0.15.0"
 flake8 = "^7.0.0"
 flake8-bandit = "^4.1.1"
 flake8-bugbear = "^24.2.6"
-flake8-builtins = "^2.4.0"
+flake8-builtins = "^2.5.0"
 flake8-commas = "^2.1.0"
 flake8-comprehensions = "^3.14.0"
 flake8-debugger = "^4.1.2"

@@ -1,4 +1,5 @@
-from predictioner import Record, should_water_plant
+from predictioner import decide_whether_to_water
+from record import Record
 
 
 def test_watering_prediction() -> None:
@@ -10,5 +11,5 @@ def test_watering_prediction() -> None:
         air_humidity=70.5,
         pressure=100.5,
     )
-    should_water = should_water_plant(record=record)
-    assert type(should_water) is bool
+    should_water = decide_whether_to_water(record=record)
+    assert type(should_water) is bool  # noqa: S101
