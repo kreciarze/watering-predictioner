@@ -2,17 +2,19 @@ from time import sleep
 
 from gpiozero import LED
 from controller import water_plant
-from measurer import measure_conditions
+from measurer import measure_conditions, Measurer
 from predictioner import decide_whether_to_water
 
 
 def main() -> None:
-    interval = 60 * 60 * 2  # 2 hours
+    interval = 1  # 60 * 60 * 2  # 2 hours
+    measurer = Measurer()
     led_blue = LED(17)
     led_red = LED(27)
 
     while True:
-        record = measure_conditions()
+        record = measurer.read_from_sensors()
+        print(record)
         should_water = decide_whether_to_water(record=record)
 
         if should_water:

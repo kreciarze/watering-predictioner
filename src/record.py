@@ -14,3 +14,6 @@ class Record(BaseModel):
 
     def to_df(self) -> DataFrame:
         return DataFrame([self.model_dump()])
+
+    def __str__(self):
+        return f"Record(soil_moisture={self.soil_moisture}, temperature={self.temperature}, time={self.time}, air_temperature={self.air_temperature}, air_humidity={self.air_humidity}, pressure={self.pressure})"
