@@ -234,3 +234,4 @@ fabric.properties
 
 # example_scripts
 example_ads_test.py
+diode_test.py

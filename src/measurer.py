@@ -42,18 +42,14 @@ class Measurer:
         reading = Record()
         ## Measure Moisture
         self.adc.start_adc(0, gain=self.MOIST_GAIN)
-        conv_reading = convert_soil_moisture_to_dataset_range(
-            self.adc.get_last_result()
-        )
+        conv_reading = convert_soil_moisture_to_dataset_range(self.adc.get_last_result())
         reading.soil_moisture = conv_reading
         time.sleep(0.2)
 
         ## Measure Luminescence
         if measure_luminescence:
             self.adc.start_adc(1, gain=self.GAIN)
-            conv_reading = convert_luminescence_to_dataset_range(
-                self.adc.get_last_result()
-            )
+            conv_reading = convert_luminescence_to_dataset_range(self.adc.get_last_result())
             reading[self.luminescence_col_name] = conv_reading
 
         ## Measure Temperature and Pressure
@@ -63,7 +59,7 @@ class Measurer:
         pressure = self.bmp280.get_pressure()
         reading.pressure = pressure
         ## Still missing some sensors, for now just return const values
-        reading.time = 10
+        reading.time = 55
         reading.temperature = 30.5
         reading.air_humidity = 70.5
 
