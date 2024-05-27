@@ -4,6 +4,7 @@ from gpiozero import LED
 from controller import water_plant
 from measurer import measure_conditions, Measurer
 from predictioner import decide_whether_to_water
+import csv
 
 
 def main() -> None:
@@ -13,7 +14,9 @@ def main() -> None:
     led_red = LED(27)
 
     while True:
-        record = measurer.read_from_sensors()
+        record = measurer.read_from_sensors(True)
+        # Save record value to CSV file
+        # measurer.save_to_csv(record)
         print(record)
         should_water = decide_whether_to_water(record=record)
 

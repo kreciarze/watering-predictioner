@@ -17,3 +17,6 @@ class Record(BaseModel):
 
     def __str__(self):
         return f"Record(soil_moisture={self.soil_moisture}, temperature={self.temperature}, time={self.time}, air_temperature={self.air_temperature}, air_humidity={self.air_humidity}, pressure={self.pressure})"
+
+    def csv_str(self):
+        return f"{self.soil_moisture},{self.temperature},{self.time},{self.air_temperature},{self.air_humidity},{self.pressure}"
