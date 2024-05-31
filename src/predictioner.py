@@ -3,7 +3,7 @@ import pickle  # noqa: S403
 from config import MODEL_PICKLE_FILENAME
 from record import Record
 
-with open(f"src/{MODEL_PICKLE_FILENAME}", "rb") as f:
+with open(MODEL_PICKLE_FILENAME, "rb") as f:
     classifier = pickle.load(f)  # noqa: S301
 
 
