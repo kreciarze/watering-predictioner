@@ -1,7 +1,8 @@
 from time import sleep
 
+
 from gpiozero import LED
-from controller import water_plant
+from controller import water_plant, log_response
 from measurer import measure_conditions, Measurer
 from predictioner import decide_whether_to_water
 import csv
@@ -21,6 +22,7 @@ def main() -> None:
         print(record, luminescence)
         should_water = decide_whether_to_water(record=record)
 
+
         if luminescence < 1:
             led_yellow.on()
         else:
@@ -35,6 +37,13 @@ def main() -> None:
             led_red.on()
         sleep(interval)
 
+        print(f"Should water: {should_water}")
+
+        log_response(should_water)
+
+
+        # Sleep for 2 hours
+        sleep(interval)
 
 if __name__ == "__main__":
     main()
