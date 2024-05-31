@@ -12,14 +12,19 @@ def main() -> None:
     measurer = Measurer()
     led_blue = LED(17)
     led_red = LED(27)
+    led_yellow = LED(22)
 
     while True:
-        record = measurer.read_from_sensors(True)
+        record, luminescence = measurer.read_from_sensors()
         # Save record value to CSV file
-        # measurer.save_to_csv(record)
-        print(record)
+        measurer.save_to_csv(record)
+        print(record, luminescence)
         should_water = decide_whether_to_water(record=record)
 
+        if luminescence < 1:
+            led_yellow.on()
+        else:
+            led_yellow.off()
         if should_water:
             water_plant()
             led_red.off()
