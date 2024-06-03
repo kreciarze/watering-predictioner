@@ -17,10 +17,10 @@ check_ff/lint/deps:
 	fawltydeps --detailed
 
 check/lint/flake8 lint/flake8 flake8-check:  ### Run flake8 lint check (pep8 etc.)
-	-flake8 .
+	-flake8 src tests
 
 check_ff/lint/flake8 lint_ff/flake8:
-	flake8 .
+	flake8 src tests
 
 check/lint/isort lint/isort isort-check:  ### Run isort lint check (import sorting)
 	-isort . --diff --check --color

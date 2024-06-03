@@ -14,3 +14,14 @@ class Record(BaseModel):
 
     def to_df(self) -> DataFrame:
         return DataFrame([self.model_dump()])
+
+    def to_row(self) -> list[str]:
+        attrs = [
+            self.soil_moisture,
+            self.temperature,
+            self.time,
+            self.air_temperature,
+            self.air_humidity,
+            self.pressure,
+        ]
+        return list(map(str, attrs))

@@ -237,3 +237,10 @@ fabric.properties
 /.idea/inspectionProfiles/Project_Default.xml
 /.idea/vcs.xml
 /.idea/watering-predictioner.iml
+
+# example_scripts
+example_ads_test.py
+diode_test.py
+
+record.csv
+/.idea/jupyter-settings.xml

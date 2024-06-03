@@ -4,13 +4,17 @@ version = "0.1.0"
 description = ""
 authors = ["Piotr Karaś <pepe500p@gmail.com>"]
 readme = "README.md"
-packages = [{include = "watering_predictioner"}]
+package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.12"
+board = "^1.0"
+bmp280 = "^1.0.0"
+gpiozero = "^2.0.1"
 pandas = "^2.2.2"
 pydantic = "^2.7.0"
 scikit-learn = "^1.4.2"
+smbus2 = "^0.4.3"
 
 [tool.poetry.dev-dependencies]
 black = { version = "^24.4.0", extras = ["jupyter"] }
@@ -19,7 +23,7 @@ flake8 = "^7.0.0"
 flake8-bandit = "^4.1.1"
 flake8-bugbear = "^24.2.6"
 flake8-builtins = "^2.5.0"
-flake8-commas = "^2.1.0"
+flake8-commas = "^4.0.0"
 flake8-comprehensions = "^3.14.0"
 flake8-debugger = "^4.1.2"
 flake8-isort = "^6.1.1"
@@ -49,6 +53,11 @@ profile = "black"
 [tool.fawltydeps]
 code = ["src"]
 deps = ["pyproject.toml"]
+ignore_undeclared = [
+    "Adafruit_ADS1x15",  # Adafruit library - can't add to poetry
+    "adafruit_dht",  # Adafruit library - can't add to poetry
+    "smbus",  # smbus library - can't add to poetry
+]
 ignore_unused = [
     # Dev dependencies. This list should contain ALL of them!
     "black",
